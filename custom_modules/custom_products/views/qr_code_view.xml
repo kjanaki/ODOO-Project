@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="product_qr_code">
+       <field name="name">product.template.qr.code</field>
+       <field name="model">product.template</field>
+       <field name="type">form</field>
+       <field name="inherit_id" ref="product.product_template_only_form_view"/>
+       <field name="arch" type="xml">
+           <field name="image_1920" position="before">
+               <field name="qr_code" widget='image' class="oe_avatar"/>
+           </field>
+       </field>
+     </record>
+</odoo>

@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Commodity list -->
+        <record id="commodity_1" model="commodity.type">
+            <field name="name">3D Designer</field>
+        </record>
+        <record id="commodity_2" model="commodity.type">
+            <field name="name">3D Printing</field>
+        </record>
+        <record id="commodity_3" model="commodity.type">
+            <field name="name">Converter</field>
+        </record>
+        <record id="commodity_4" model="commodity.type">
+            <field name="name">Accustics</field>
+        </record>
+        <record id="commodity_5" model="commodity.type">
+            <field name="name">Accustic Isolation</field>
+        </record>
+        <record id="commodity_6" model="commodity.type">
+            <field name="name">Actuators</field>
+        </record>
+        <record id="commodity_7" model="commodity.type">
+            <field name="name">Adhesives</field>
+        </record>
+        <record id="commodity_8" model="commodity.type">
+            <field name="name">Air Conditioning System</field>
+        </record>
+        <record id="commodity_9" model="commodity.type">
+            <field name="name">Air Filters</field>
+        </record>
+        <record id="commodity_10" model="commodity.type">
+            <field name="name">Aluminium  Profile</field>
+        </record>
+        <record id="commodity_11" model="commodity.type">
+            <field name="name">Aluminium Casting</field>
+        </record>
+        <record id="commodity_12" model="commodity.type">
+            <field name="name">Axle</field>
+        </record>
+        <record id="commodity_13" model="commodity.type">
+            <field name="name">Batteryr</field>
+        </record>
+        <record id="commodity_14" model="commodity.type">
+            <field name="name">Battery cells</field>
+        </record>
+        <record id="commodity_15" model="commodity.type">
+            <field name="name">Battery Charger</field>
+        </record>
+        <record id="commodity_16" model="commodity.type">
+            <field name="name">Battery Management System</field>
+        </record>
+        <record id="commodity_17" model="commodity.type">
+            <field name="name">Bearings</field>
+        </record>
+        <record id="commodity_18" model="commodity.type">
+            <field name="name">Belts</field>
+        </record>
+        <record id="commodity_19" model="commodity.type">
+            <field name="name">Bolts</field>
+        </record>
+        <record id="commodity_20" model="commodity.type">
+            <field name="name">Brake System</field>
+        </record>
+        <record id="commodity_21" model="commodity.type">
+            <field name="name">Brakes</field>
+        </record>
+        <record id="commodity_22" model="commodity.type">
+            <field name="name">Brushes</field>
+        </record>
+        <record id="commodity_23" model="commodity.type">
+            <field name="name">Brake Cable</field>
+        </record>
+        <record id="commodity_24" model="commodity.type">
+            <field name="name">Cabs</field>
+        </record>
+        <record id="commodity_25" model="commodity.type">
+            <field name="name">Cameras</field>
+        </record>
+        <record id="commodity_26" model="commodity.type">
+            <field name="name">CAN- Bus</field>
+        </record>
+        <record id="commodity_27" model="commodity.type">
+            <field name="name">Shafts</field>
+        </record>
+        <record id="commodity_28" model="commodity.type">
+            <field name="name">Casting/Forging</field>
+        </record>
+        <record id="commodity_29" model="commodity.type">
+            <field name="name">Chassis</field>
+        </record>
+        <record id="commodity_30" model="commodity.type">
+            <field name="name">Air Conditioning Compressor</field>
+        </record>
+        <record id="commodity_31" model="commodity.type">
+            <field name="name">Turning and Milling</field>
+        </record>
+        <record id="commodity_32" model="commodity.type">
+            <field name="name">Coating</field>
+        </record>
+        <record id="commodity_33" model="commodity.type">
+            <field name="name">Cold forming</field>
+        </record>
+        <record id="commodity_34" model="commodity.type">
+            <field name="name">Control Panels</field>
+        </record>
+        <record id="commodity_35" model="commodity.type">
+            <field name="name">Controller</field>
+        </record>
+        <record id="commodity_36" model="commodity.type">
+            <field name="name">Coupling</field>
+        </record>
+        <record id="commodity_37" model="commodity.type">
+            <field name="name">Hydraulic Cylinders</field>
+        </record>
+        <record id="commodity_38" model="commodity.type">
+            <field name="name">Damper</field>
+        </record>
+        <record id="commodity_39" model="commodity.type">
+            <field name="name">Digital measurement technology</field>
+        </record>
+        <record id="commodity_40" model="commodity.type">
+            <field name="name">DIN and Standard Parts</field>
+        </record>
+        <record id="commodity_41" model="commodity.type">
+            <field name="name">Displays</field>
+        </record>
+        <record id="commodity_42" model="commodity.type">
+            <field name="name">Documentation</field>
+        </record>
+        <record id="commodity_43" model="commodity.type">
+            <field name="name">E-Motors</field>
+        </record>
+        <record id="commodity_44" model="commodity.type">
+            <field name="name">Edge Protection</field>
+        </record>
+        <record id="commodity_45" model="commodity.type">
+            <field name="name">Electrical Connectors</field>
+        </record>
+        <record id="commodity_46" model="commodity.type">
+            <field name="name">Electrical fuses</field>
+        </record>
+        <record id="commodity_47" model="commodity.type">
+            <field name="name">Electrical Harnesses</field>
+        </record>
+        <record id="commodity_48" model="commodity.type">
+            <field name="name">Electrical Relays</field>
+        </record>
+        <record id="commodity_49" model="commodity.type">
+            <field name="name">Electrics</field>
+        </record>
+        <record id="commodity_50" model="commodity.type">
+            <field name="name">Electronic components</field>
+        </record>
+        <record id="commodity_51" model="commodity.type">
+            <field name="name">Electronics</field>
+        </record>
+        <record id="commodity_52" model="commodity.type">
+            <field name="name">Engineering Services</field>
+        </record>
+        <record id="commodity_53" model="commodity.type">
+            <field name="name">Etiketten</field>
+        </record>
+        <record id="commodity_54" model="commodity.type">
+            <field name="name">Fans</field>
+        </record>
+        <record id="commodity_55" model="commodity.type">
+            <field name="name">Fastener</field>
+        </record>
+        <record id="commodity_56" model="commodity.type">
+            <field name="name">Filters</field>
+        </record>
+        <record id="commodity_57" model="commodity.type">
+            <field name="name">Fire Protection Systems or a part of</field>
+        </record>
+        <record id="commodity_58" model="commodity.type">
+            <field name="name">Fluid power systems</field>
+        </record>
+        <record id="commodity_59" model="commodity.type">
+            <field name="name">Force Sensors</field>
+        </record>
+        <record id="commodity_60" model="commodity.type">
+            <field name="name">Forwarder / Tranpsorter</field>
+        </record>
+        <record id="commodity_61" model="commodity.type">
+            <field name="name">Gateway</field>
+        </record>
+        <record id="commodity_62" model="commodity.type">
+            <field name="name">Gearbox</field>
+        </record>
+        <record id="commodity_63" model="commodity.type">
+            <field name="name">Gluing</field>
+        </record>
+        <record id="commodity_64" model="commodity.type">
+            <field name="name">Handle</field>
+        </record>
+        <record id="commodity_65" model="commodity.type">
+            <field name="name">Handrails</field>
+        </record>
+        <record id="commodity_66" model="commodity.type">
+            <field name="name">Air Conditioning Heater</field>
+        </record>
+        <record id="commodity_67" model="commodity.type">
+            <field name="name">High-pressure Pump</field>
+        </record>
+        <record id="commodity_68" model="commodity.type">
+            <field name="name">HMI Components</field>
+        </record>
+        <record id="commodity_69" model="commodity.type">
+            <field name="name">Homoligation Support</field>
+        </record>
+        <record id="commodity_70" model="commodity.type">
+            <field name="name">Micro Hydraulic Blocks</field>
+        </record>
+        <record id="commodity_71" model="commodity.type">
+            <field name="name">Micro Hydraulic Components</field>
+        </record>
+        <record id="commodity_72" model="commodity.type">
+            <field name="name">Micro Hydraulic Hoses</field>
+        </record>
+        <record id="commodity_73" model="commodity.type">
+            <field name="name">Micro Hydraulic aggregate</field>
+        </record>
+        <record id="commodity_74" model="commodity.type">
+            <field name="name">Micro Hydraulic Pipes</field>
+        </record>
+        <record id="commodity_75" model="commodity.type">
+            <field name="name">Micro Hydraulic Pumps</field>
+        </record>
+        <record id="commodity_76" model="commodity.type">
+            <field name="name">Micro Hydraulic systems</field>
+        </record>
+        <record id="commodity_77" model="commodity.type">
+            <field name="name">Micro Hydraulic tanks</field>
+        </record>
+        <record id="commodity_78" model="commodity.type">
+            <field name="name">Micro Hydraulic Valve</field>
+        </record>
+        <record id="commodity_79" model="commodity.type">
+            <field name="name">Hydraulic Blocks</field>
+        </record>
+        <record id="commodity_80" model="commodity.type">
+            <field name="name">Hydraulic Components</field>
+        </record>
+        <record id="commodity_81" model="commodity.type">
+            <field name="name">Hydraulic Hoses</field>
+        </record>
+        <record id="commodity_82" model="commodity.type">
+            <field name="name">Hydraulic aggregate</field>
+        </record>
+        <record id="commodity_83" model="commodity.type">
+            <field name="name">Hydraulic Pipes</field>
+        </record>
+        <record id="commodity_84" model="commodity.type">
+            <field name="name">Hydraulic Pumps</field>
+        </record>
+        <record id="commodity_85" model="commodity.type">
+            <field name="name">Hydraulic systems</field>
+        </record>
+        <record id="commodity_86" model="commodity.type">
+            <field name="name">Hydraulic tanks</field>
+        </record>
+        <record id="commodity_87" model="commodity.type">
+            <field name="name">Hydraulic Valve</field>
+        </record>
+        <record id="commodity_88" model="commodity.type">
+            <field name="name">Instrument Panel</field>
+        </record>
+        <record id="commodity_89" model="commodity.type">
+            <field name="name">Interior</field>
+        </record>
+        <record id="commodity_90" model="commodity.type">
+            <field name="name">Inverter</field>
+        </record>
+        <record id="commodity_91" model="commodity.type">
+            <field name="name">Joint Heads</field>
+        </record>
+        <record id="commodity_92" model="commodity.type">
+            <field name="name">Joystick</field>
+        </record>
+        <record id="commodity_93" model="commodity.type">
+            <field name="name">Labels</field>
+        </record>
+        <record id="commodity_94" model="commodity.type">
+            <field name="name">Lamps</field>
+        </record>
+        <record id="commodity_95" model="commodity.type">
+            <field name="name">LED Lamps</field>
+        </record>
+        <record id="commodity_96" model="commodity.type">
+            <field name="name">Level Sensors</field>
+        </record>
+        <record id="commodity_97" model="commodity.type">
+            <field name="name">Logos</field>
+        </record>
+        <record id="commodity_98" model="commodity.type">
+            <field name="name">Low-Voltage Equipment</field>
+        </record>
+        <record id="commodity_99" model="commodity.type">
+            <field name="name">Lubricants</field>
+        </record>
+        <record id="commodity_100" model="commodity.type">
+            <field name="name">Modeling</field>
+        </record>
+        <record id="commodity_101" model="commodity.type">
+            <field name="name">Molding</field>
+        </record>
+        <record id="commodity_102" model="commodity.type">
+            <field name="name">Multimedia System</field>
+        </record>
+        <record id="commodity_103" model="commodity.type">
+            <field name="name">Nozzles</field>
+        </record>
+        <record id="commodity_104" model="commodity.type">
+            <field name="name">Office Material</field>
+        </record>
+        <record id="commodity_105" model="commodity.type">
+            <field name="name">Oil and fuel filters</field>
+        </record>
+        <record id="commodity_106" model="commodity.type">
+            <field name="name">Oil Cooler</field>
+        </record>
+        <record id="commodity_107" model="commodity.type">
+            <field name="name">On Board Charger</field>
+        </record>
+        <record id="commodity_108" model="commodity.type">
+            <field name="name">Oxygen and Gas Sensors</field>
+        </record>
+        <record id="commodity_109" model="commodity.type">
+            <field name="name">Packaging</field>
+        </record>
+        <record id="commodity_110" model="commodity.type">
+            <field name="name">Brake Pedals</field>
+        </record>
+        <record id="commodity_111" model="commodity.type">
+            <field name="name">Perforated metal</field>
+        </record>
+        <record id="commodity_112" model="commodity.type">
+            <field name="name">Personal Protection Equipment and Workwear</field>
+        </record>
+        <record id="commodity_113" model="commodity.type">
+            <field name="name">Peumatics</field>
+        </record>
+        <record id="commodity_114" model="commodity.type">
+            <field name="name">Plastic molded parts</field>
+        </record>
+        <record id="commodity_115" model="commodity.type">
+            <field name="name">Plastic Moulders</field>
+        </record>
+        <record id="commodity_116" model="commodity.type">
+            <field name="name">Plastic parts</field>
+        </record>
+        <record id="commodity_117" model="commodity.type">
+            <field name="name">Plastic vacuum forming</field>
+        </record>
+        <record id="commodity_118" model="commodity.type">
+            <field name="name">Pneumatic</field>
+        </record>
+        <record id="commodity_119" model="commodity.type">
+            <field name="name">Pressure relieve valves</field>
+        </record>
+        <record id="commodity_120" model="commodity.type">
+            <field name="name">Pressure Sensors</field>
+        </record>
+        <record id="commodity_121" model="commodity.type">
+            <field name="name">Printing</field>
+        </record>
+        <record id="commodity_122" model="commodity.type">
+            <field name="name">Pulley</field>
+        </record>
+        <record id="commodity_123" model="commodity.type">
+            <field name="name">Pumps</field>
+        </record>
+        <record id="commodity_124" model="commodity.type">
+            <field name="name">Regulators</field>
+        </record>
+        <record id="commodity_125" model="commodity.type">
+            <field name="name">Resins</field>
+        </record>
+        <record id="commodity_126" model="commodity.type">
+            <field name="name">RIMS</field>
+        </record>
+        <record id="commodity_127" model="commodity.type">
+            <field name="name">Rolls</field>
+        </record>
+        <record id="commodity_128" model="commodity.type">
+            <field name="name">Rubber</field>
+        </record>
+        <record id="commodity_129" model="commodity.type">
+            <field name="name">Sealing and anti-vibration solutions</field>
+        </record>
+        <record id="commodity_130" model="commodity.type">
+            <field name="name">Seals</field>
+        </record>
+        <record id="commodity_131" model="commodity.type">
+            <field name="name">Seats</field>
+        </record>
+        <record id="commodity_132" model="commodity.type">
+            <field name="name">Security Lamps</field>
+        </record>
+        <record id="commodity_133" model="commodity.type">
+            <field name="name">Sensors</field>
+        </record>
+        <record id="commodity_134" model="commodity.type">
+            <field name="name">Sheet Metal</field>
+        </record>
+        <record id="commodity_135" model="commodity.type">
+            <field name="name">Shock absorbers</field>
+        </record>
+        <record id="commodity_136" model="commodity.type">
+            <field name="name">Signage, graphics</field>
+        </record>
+        <record id="commodity_137" model="commodity.type">
+            <field name="name">Signs</field>
+        </record>
+        <record id="commodity_138" model="commodity.type">
+            <field name="name">Software</field>
+        </record>
+        <record id="commodity_139" model="commodity.type">
+            <field name="name">Spraying system</field>
+        </record>
+        <record id="commodity_140" model="commodity.type">
+            <field name="name">Spring leaf</field>
+        </record>
+        <record id="commodity_141" model="commodity.type">
+            <field name="name">Springs</field>
+        </record>
+        <record id="commodity_142" model="commodity.type">
+            <field name="name">Sprinkles</field>
+        </record>
+        <record id="commodity_143" model="commodity.type">
+            <field name="name">Steel kabel</field>
+        </record>
+        <record id="commodity_144" model="commodity.type">
+            <field name="name">Steel plates</field>
+        </record>
+        <record id="commodity_145" model="commodity.type">
+            <field name="name">Steel products</field>
+        </record>
+        <record id="commodity_146" model="commodity.type">
+            <field name="name">Steering Column</field>
+        </record>
+        <record id="commodity_147" model="commodity.type">
+            <field name="name">Sticker</field>
+        </record>
+        <record id="commodity_148" model="commodity.type">
+            <field name="name">Subcontract Manufacturing</field>
+        </record>
+        <record id="commodity_149" model="commodity.type">
+            <field name="name">Surface Treatment</field>
+        </record>
+        <record id="commodity_150" model="commodity.type">
+            <field name="name">Switches</field>
+        </record>
+        <record id="commodity_151" model="commodity.type">
+            <field name="name">Technical components</field>
+        </record>
+        <record id="commodity_152" model="commodity.type">
+            <field name="name">Temperature Isolation</field>
+        </record>
+        <record id="commodity_153" model="commodity.type">
+            <field name="name">Temperature measuring device</field>
+        </record>
+        <record id="commodity_154" model="commodity.type">
+            <field name="name">Therm. Equipment</field>
+        </record>
+        <record id="commodity_155" model="commodity.type">
+            <field name="name">Tooling </field>
+        </record>
+        <record id="commodity_156" model="commodity.type">
+            <field name="name">Tools</field>
+        </record>
+        <record id="commodity_157" model="commodity.type">
+            <field name="name">Trailer</field>
+        </record>
+        <record id="commodity_158" model="commodity.type">
+            <field name="name">Transmission</field>
+        </record>
+        <record id="commodity_159" model="commodity.type">
+            <field name="name">Tyres</field>
+        </record>
+        <record id="commodity_160" model="commodity.type">
+            <field name="name">Tubes</field>
+        </record>
+        <record id="commodity_161" model="commodity.type">
+            <field name="name">Vehicle equipment</field>
+        </record>
+        <record id="commodity_162" model="commodity.type">
+            <field name="name">Water Cooler</field>
+        </record>
+        <record id="commodity_163" model="commodity.type">
+            <field name="name">Water Pump</field>
+        </record>
+        <record id="commodity_164" model="commodity.type">
+            <field name="name">Water Sensors</field>
+        </record>
+        <record id="commodity_165" model="commodity.type">
+            <field name="name">Water System</field>
+        </record>
+        <record id="commodity_166" model="commodity.type">
+            <field name="name">Welding Consumables</field>
+        </record>
+        <record id="commodity_167" model="commodity.type">
+            <field name="name">Wheels</field>
+        </record>
+        <record id="commodity_168" model="commodity.type">
+            <field name="name">Wiper Engin</field>
+        </record>
+        <record id="commodity_169" model="commodity.type">
+            <field name="name">woven mesh</field>
+        </record>
+    </data>
+</odoo>
