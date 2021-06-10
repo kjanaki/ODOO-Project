@@ -5,20 +5,40 @@ class ProductTemplate(models.Model):
 	_inherit = "product.template"
 	_description = "Product"
 
-	duns_number = fields.Integer('DUNS number:')
-	default_code = fields.Char('Part No:', index=True)
+
 	length = fields.Char('Length',track_visibility='always')
 	breadth = fields.Char('Breadth',track_visibility='always')
 	height = fields.Char('Height',track_visibility='always')
+	part = fields.Char('Part ID',track_visibility='always')
+	revision = fields.Char('Revision',track_visibility='always')
+	material = fields.Char('Material',track_visibility='always')
+	lifecycle_status = fields.Char('Lifecycle Status',track_visibility='always')
+	tool_no = fields.Char('Tool No',track_visibility='always')
+	part_type = fields.Char('Type of Part',track_visibility='always')
+	# Relational fields
+	attachment_ids = fields.One2many('product.attachment','header_id',string='Attachments')
 
 	def name_get(self):
 		self.browse(self.ids).read(['name', 'default_code'])
 		return [(template.id, '%s%s' % (template.default_code and '%s - ' % template.default_code or '', template.name))
 				for template in self]
 
+	class Product_Attachment(models.Model):
+		_name = "product.attachment"
+		_description = 'Product Attachment'
+
+		attachment_type = fields.Selection([('specification', 'Specification'),
+									        ('two_d_files', '2D Files'),
+									        ('three_d_files', '3D Files'),
+									        ('data_sheet', 'Data Sheet')], string="Type",)
+		attachment = fields.Binary('Attachment')
+		is_verified = fields.Boolean('Verified')
+		verified_id = fields.Many2one('hr.employee',string='Verified By')
+		header_id = fields.Many2one('product.template',string='Attachments')
+
 class ProductProduct(models.Model):
 	_inherit = "product.product"
-	_description = "Product"
+	_description = "Product" 
 
 
 	def name_get(self):

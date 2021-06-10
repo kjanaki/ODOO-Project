@@ -7,6 +7,7 @@ class Partner(models.Model):
     _inherit = "res.partner"
     _description = 'Contact'
 
+    duns_number = fields.Integer('DUNS number')
     commodity_id = fields.Many2many("commodity.type", string='Commodity Type')
     financial_rating = fields.Selection([
         ('a', 'A'),

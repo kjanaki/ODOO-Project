@@ -9,6 +9,7 @@
     'images': [],
     'depends': ['product','stock'],
     'data': [
+            'security/ir.model.access.csv',
             'views/product_views.xml',
             'views/qr_code_view.xml',],
     'installable': True,
