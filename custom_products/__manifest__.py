@@ -3,7 +3,7 @@
 {
     'name': "Custom Products",
     'summary': """Custom Products""",
-    'category': 'Base',
+    'category': 'Base', 
     "license": "AGPL-3",
     'version': '13',
     'images': [],
