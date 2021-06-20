@@ -3,7 +3,6 @@
 {
     'name': "Custom Contacts",
     'summary': """Custom contacts""",
-    'author': "Raghu",
     'category': 'Base',
     "license": "AGPL-3",
     'version': '13',
