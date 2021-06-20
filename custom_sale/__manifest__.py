@@ -10,6 +10,7 @@
     'images': [],
     'depends': ['sale'],
     'data': [
-            'data/cron.xml'],
+            # 'data/cron.xml'
+            ],
     'installable': True,
 }

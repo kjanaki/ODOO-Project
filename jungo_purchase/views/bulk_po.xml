@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="view_bulk_po_tree" model="ir.ui.view">
+		<field name="name">bulk.po.tree</field>
+		<field name="model">bulk.po</field>
+		<field name="priority" eval="8" />
+		<field name="arch" type="xml">
+			<tree>
+				<field name="name" string="Sequence No"/>
+				<field name="commodity_id"/>
+				<field name="create_uid"/>
+				<field name="state" widget="badge" decoration-success="state == 'done'" decoration-info="state == 'draft'"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="view_bulk_po_form" model="ir.ui.view">
+		<field name="name">bulk.po.form</field>
+		<field name="model">bulk.po</field>
+		<field name="arch" type="xml">
+			<form>
+				<header>
+					<button string="Create RFQ" name="action_create_rfq" type="object" class="oe_highlight" attrs="{'invisible':[('state','not in',['draft'])]}"/>
+					<!-- <button string="In-Progress" name="button_in_progress" type="object" class="oe_highlight" attrs="{'invisible':[('state','not in',['assigned'])]}"/>
+					<button string="Create Quotation" name="button_quotation" class="oe_highlight" type="object" attrs="{'invisible': ['|',('is_quote_created','=',True),('state','not in',['in_progress','assigned'])]}"/>
+					<button string="Close" name="button_close" type="object" class="oe_highlight" attrs="{'invisible':[('state','not in',['assigned','in_progress'])]}"/>
+					<button string="Reject" name="button_reject" type="object" class="oe_highlight" attrs="{'invisible':[('state','not in',['assigned','in_progress'])]}"/> -->
+					<field name="state" widget="statusbar" statusbar_visible="draft,in_progress,done"/>
+				</header>
+				<sheet>
+					<div class="oe_button_box" name="button_box">
+						<button name="get_rfq" class="oe_stat_button" type="object" icon="fa-list-alt" attrs="{'invisible': [('state', '=', 'draft')]}">
+							<field name="po_count" widget="statinfo" string="RFQs/Orders"/>
+						</button>
+					</div>
+			
+					<div class="oe_title oe_inline">
+						<h1><field name="name"/></h1>
+					</div>
+					<group>
+						<group>
+							<field name="commodity_id" attrs="{'readonly': [('state', 'not in', 'draft')]}"/>
+							<field name="partner_ids" widget="many2many_tags" attrs="{'readonly': [('state', 'not in', 'draft')]}"/>
+						</group>
+						<group>
+							<field name="create_uid"/>
+							<field name="create_date"/>
+						</group>
+					</group>
+					<notebook>
+						<page string="Products">
+							<field name="prod_ids" widget="one2many_list" mode="tree" attrs="{'readonly': [('state', 'not in', 'draft')]}">
+								<tree editable="bottom" >
+									<field name="product_id"/>
+									<field name="product_qty"/>
+									<field name="price_unit"/>
+								</tree>
+							</field>
+						</page>
+					</notebook>
+				</sheet>
+				<div class="oe_chatter">
+					<field name="message_follower_ids" widget="mail_followers"/>
+					<field name="message_ids" widget="mail_thread" />
+				</div>
+			</form>
+		</field>
+	</record>
+
+	<!-- <record id="view_bulk_po_search" model="ir.ui.view">
+		<field name="name">bulk.po.search</field>
+		<field name="model">bulk.po</field>
+		<field name="arch" type="xml">
+			<search string="Search Tickets">
+				<field name="name"></field>
+				<group expand="0" string="Group By">
+					<filter string="Open Tickets" name="state" domain="[('state','not in',['closed','reject'])]"/>
+				</group>
+			</search>
+		</field>
+	</record> -->
+
+	<record id="sequence_tickets" model="ir.sequence">
+		<field name="name">bulk.po</field>
+		<field name="code">bulk_po</field>
+		<field name="prefix">BP/</field>
+		<field name="padding">3</field>
+		<field eval="False" name="company_id"/>
+	</record>
+
+	<record model="ir.actions.act_window" id="action_bulk_po">
+		<field name="name">Bulk PO</field>
+		<field name="res_model">bulk.po</field>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">Create a New Bulk Purchase Order</p>
+		</field>
+	</record>
+
+	<menuitem id="menu_bulk_po" name="Bulk Purchase Order"
+			parent="purchase.menu_procurement_management"
+			action="action_bulk_po" sequence="16"/>
+</odoo>
