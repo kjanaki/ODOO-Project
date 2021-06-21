@@ -12,7 +12,7 @@
 				<field name="commodity_id" widget="many2many_tags"/>
 				<field name="duns_number"/>
 				<field name="is_mail_send"/>
-				<field name="nda"/>
+				<field name="nda" invisible="1"/>
 			</xpath>
 		 </field>
 	</record>
