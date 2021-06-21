@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<!--Email template for NDA -->
+        <record id="email_template_for_nda" model="mail.template">
+            <field name="name">Send NDA for contacts</field>
+            <field name="email_from">${user.email}</field>
+            <field name="email_to">${object.email}</field>
+            <field name="subject">NDA</field>
+            <field name="lang">${user.lang}</field>
+            <field name="model_id" ref="model_res_partner"/>
+            <field name="body_html"><![CDATA[
+                <p>Dear ${object.name},</p>
+                <br/>
+                <p>Please find the NDA in attachment</p>
+                <br/>
+                <br/>
+                <p>Regards,</p>
+                <p><strong>Odoo AUTOMATION</strong></p>
+                <p>This is a system generated email, do not reply to this email id</p>
+            ]]></field>
+        </record>
+</odoo>
