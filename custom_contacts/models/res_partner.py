@@ -17,13 +17,11 @@ class Partner(models.Model):
 		('c', 'C'),
 		('d', 'D'),
 		('e', 'E'),
-	], string="Financial Rating",)
-	is_mail_send = fields.Boolean()
-	nda = fields.Binary()
+	], string="Financial Rating")
+	is_mail_send = fields.Boolean('Mail Sent?')
+	nda = fields.Binary('NDA')
 
 	def send_nda(self):
-		# print ('1111111111111',self.nda)
-		# stop
 		if self.is_mail_send == False:
 			attachment = self.env['ir.attachment'].create({'name':'nda.pdf',
 														'type': 'binary',
