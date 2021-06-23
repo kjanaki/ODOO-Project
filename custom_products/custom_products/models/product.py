@@ -6,15 +6,15 @@ class ProductTemplate(models.Model):
 	_description = "Product"
 
 
-	length = fields.Char('Length',track_visibility='always')
-	breadth = fields.Char('Breadth',track_visibility='always')
-	height = fields.Char('Height',track_visibility='always')
-	part = fields.Char('Part ID',track_visibility='always')
-	revision = fields.Char('Revision',track_visibility='always')
-	material = fields.Char('Material',track_visibility='always')
-	lifecycle_status = fields.Char('Lifecycle Status',track_visibility='always')
-	tool_no = fields.Char('Tool No',track_visibility='always')
-	part_type = fields.Char('Type of Part',track_visibility='always')
+	length = fields.Char('Length')
+	breadth = fields.Char('Breadth')
+	height = fields.Char('Height')
+	part = fields.Char('Part ID')
+	revision = fields.Char('Revision')
+	material = fields.Char('Material')
+	lifecycle_status = fields.Char('Lifecycle Status')
+	tool_no = fields.Char('Tool No')
+	part_type = fields.Char('Type of Part')
 	# Relational fields
 	attachment_ids = fields.One2many('product.attachment','header_id',string='Attachments')
 
