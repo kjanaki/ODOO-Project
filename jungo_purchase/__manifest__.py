@@ -10,6 +10,8 @@
     'depends': ['purchase','custom_contacts'],
     'data': [
             'security/ir.model.access.csv',
-            'views/bulk_po.xml'],
+            'views/bulk_po.xml',
+            # 'data/cron.xml'
+            ],
     'installable': True,
 }

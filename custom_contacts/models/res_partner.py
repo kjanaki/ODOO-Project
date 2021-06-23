@@ -17,9 +17,15 @@ class Partner(models.Model):
 		('c', 'C'),
 		('d', 'D'),
 		('e', 'E'),
+<<<<<<< HEAD
+	], string="Financial Rating",)
+	is_mail_send = fields.Boolean()
+	is_nda_signed = fields.Boolean(string='Is NDA signed')
+=======
 	], string="Financial Rating")
 	is_mail_send = fields.Boolean('Mail Sent?')
 	nda = fields.Binary('NDA')
+>>>>>>> 04a29a1b770507ccfb0bd660456830a958fc4290
 
 	def send_nda(self):
 		if self.is_mail_send == False:

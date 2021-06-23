@@ -11,8 +11,8 @@
 			<xpath expr="//field[@name='vat']" position="after">
 				<field name="commodity_id" widget="many2many_tags"/>
 				<field name="duns_number"/>
-				<field name="is_mail_send"/>
-				<field name="nda" invisible="1"/>
+				<field name="is_nda_signed"/>
+				<field name="is_mail_send" invisible="1"/>
 			</xpath>
 		 </field>
 	</record>
