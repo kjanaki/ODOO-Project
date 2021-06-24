@@ -13,11 +13,12 @@
 				<field name="duns_number"/>
 				<field name="is_nda_signed"/>
 				<field name="is_mail_send" invisible="1"/>
+				<field name="financial_rating"/>
 			</xpath>
 		 </field>
 	</record>
 
-	<record id="inherit_view_partner_property_form" model="ir.ui.view">
+<!--	<record id="inherit_view_partner_property_form" model="ir.ui.view">
 		<field name="name">res.partner.form</field>
 		<field name="model">res.partner</field>
 		<field name="inherit_id" ref="account.view_partner_property_form"/>
@@ -26,5 +27,5 @@
 				<field name="financial_rating"/>
 			</xpath>
 		 </field>
-	</record>
+	</record> -->
 </odoo>

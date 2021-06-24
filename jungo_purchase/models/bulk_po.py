@@ -95,13 +95,4 @@ class PurchaseOrder(models.Model):
 			bulk_obj = self.env['bulk.po'].search([('name', '=', self.origin),('company_id', '=', self.company_id.id)])
 			if bulk_obj:
 				bulk_obj.write({'state': 'done'})
-		return res
-
-	@api.model
-	def send_rfq(self):
-		purchase_obj = self.env['purchase.order'].search([('state', '=','draft')])
-		for purchase in purchase_obj:
-			template_id = self.env.ref('purchase.email_template_edi_purchase')                
-			template_id.send_mail(purchase.id, force_send=True)
-			purchase.action_rfq_send()
-			purchase.write({'state': 'sent'})
+		return res    
