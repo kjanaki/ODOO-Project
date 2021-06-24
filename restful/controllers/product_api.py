@@ -8,13 +8,14 @@ import json
 class ProductApiController(http.Controller):
 
     # Access token get specified user
-    def get_access_token(self,res_user_obj):    
-        return [j.token for i in res_user_obj for j in i.token_ids]
-        
+    def get_access_token(self, res_user_obj):
+        if res_user_obj:
+            return [i.token for i in res_user_obj.token_ids]
+
     # Product Search
     @http.route('/get/product_list', type='json', auth="public")
     def get_product_list(self, **kw):
-        access_token = request.httprequest.headers.get("access_token")
+        access_token = kw.get("access_token")
         res_user_obj = request.env['res.users'].sudo().search([('id','=',request.env.context['uid'])])
         acs_token_ids = self.get_access_token(res_user_obj)
             
@@ -46,7 +47,7 @@ class ProductApiController(http.Controller):
     # Product Delete
     @http.route('/api/product_delete/', type='json', auth="public")
     def product_delete_fun(self, **kw):
-        access_token = request.httprequest.headers.get("access_token")
+        access_token = kw.get("access_token")
         res_user_obj = request.env['res.users'].sudo().search([('id','=',request.env.context['uid'])])
         acs_token_ids = self.get_access_token(res_user_obj)
         if access_token in acs_token_ids:
@@ -67,7 +68,7 @@ class ProductApiController(http.Controller):
     # Create Logic   
     @http.route('/api/product_create/', type='json', auth="public")
     def producte_create(self, **kw):
-        access_token = request.httprequest.headers.get("access_token")
+        access_token = kw.get("access_token")
         res_user_obj = request.env['res.users'].sudo().search([('id','=',request.env.context['uid'])])
         acs_token_ids = self.get_access_token(res_user_obj)
         if access_token in acs_token_ids:
@@ -114,7 +115,7 @@ class ProductApiController(http.Controller):
         # Product Update Logic
     @http.route('/api/product_update', type='json', auth="public")
     def producte_update(self, **kw):
-            access_token = request.httprequest.headers.get("access_token")
+            access_token = kw.get("access_token")
             res_user_obj = request.env['res.users'].sudo().search([('id', '=', request.env.context['uid'])])
             acs_token_ids = self.get_access_token(res_user_obj)
             if access_token in acs_token_ids:
