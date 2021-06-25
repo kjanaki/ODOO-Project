@@ -7,7 +7,7 @@
     "license": "AGPL-3",
     'version': '13',
     'images': [],
-    'depends': ['product','stock'],
+    'depends': ['product','stock','hr'],
     'data': [
             'security/ir.model.access.csv',
             'views/product_views.xml',
