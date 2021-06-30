@@ -12,6 +12,60 @@ class ProductApiController(http.Controller):
         if res_user_obj:
             return [i.token for i in res_user_obj.token_ids]
 
+    # BOM Create Logic
+    @http.route('/api/bom_part_create/', type='json', auth="public")
+    def bom_part_create(self, **kw):
+            access_token = request.httprequest.headers.get("access_token")
+            res_user_obj = request.env['res.users'].sudo().search([('id', '=', request.env.context['uid'])])
+            acs_token_ids = self.get_access_token(res_user_obj)
+            if access_token in acs_token_ids:
+                if kw.get("pp"):
+                    for i in kw.get("pp"):
+                        default_code = i.get('part')
+                        name = i.get('part')
+
+                        product_templ_rec = request.env['product.template'].sudo().search(
+                            [('default_code', '=', default_code)])
+                        if not product_templ_rec:
+                            product_templ_rec = request.env['product.template'].sudo().create({
+                                "default_code": default_code,
+                                "name": name,
+                            })
+
+                        mrp_bom_obj = request.env['mrp.bom'].sudo().search([('code', '=', default_code)])
+                        if not mrp_bom_obj:
+                            mrp_bom_obj = request.env['mrp.bom'].sudo().create({
+                                "product_tmpl_id": product_templ_rec.id,
+                                "code": default_code,
+                                "product_qty": 10,
+                            })
+
+                        if mrp_bom_obj:
+                            for j in i.get('child_ids'):
+                                p_temp = request.env['product.template'].sudo().search(
+                                    [('default_code', '=', j['part'])])
+                                if not p_temp:
+                                    p_temp = request.env['product.template'].sudo().create({
+                                        "default_code": j['part'],
+                                        "name": j['part']
+                                    })
+
+                                p_variant = request.env['product.product'].sudo().search(
+                                    [('product_tmpl_id', '=', p_temp.id)])
+                                if not p_variant:
+                                    p_variant = request.env['product.product'].sudo().create({
+                                        "default_code": j['part'],
+                                        "name": j['part'],
+                                        "product_tmpl_id": p_temp.id
+                                    })
+                                mrp_bom_objtest_bom_l1 = request.env['mrp.bom.line'].sudo().create({
+                                    'bom_id': mrp_bom_obj.id,
+                                    'product_id': p_variant.id,
+                                    'product_qty': 12
+                                })
+
+                    return {"status": 'BOM Part %s Created ' % mrp_bom_obj.id}
+
     # Product Search
     @http.route('/get/product_list', type='json', auth="public")
     def get_product_list(self, **kw):
