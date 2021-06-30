@@ -22,6 +22,10 @@
 			</field>
 			<xpath expr="//field[@name='default_code']" position="after">
 				<field name="part"/>
+				<field name="name_a"/>
+				<field name="name_d"/>
+				<field name="name_f"/>
+				<field name="classification_code"/>
 				<field name="revision"/>
 				<field name="material"/>
 				<field name="part_type"/>
