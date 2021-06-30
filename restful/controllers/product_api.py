@@ -5,25 +5,27 @@ from odoo import http
 from odoo.http import request
 import json
 import logging
+
 _logger = logging.getLogger(__name__)
+
 
 class ProductApiController(http.Controller):
 
     # Access token get specified user
-    def get_access_token(self,res_user_obj):    
+    def get_access_token(self, res_user_obj):
         return [j.token for i in res_user_obj for j in i.token_ids]
-        
+
     # Product Search
     @http.route('/get/product_list', type='json', auth="public")
     def get_product_list(self, **kw):
-#         access_token = request.httprequest.headers.get("access_token")
+        #         access_token = request.httprequest.headers.get("access_token")
         access_token = kw.get("access_token")
         uid = request.env.context['uid']
-        res_user_obj = request.env['res.users'].sudo().search([('id','=',uid)])
+        res_user_obj = request.env['res.users'].sudo().search([('id', '=', uid)])
         acs_token_ids = self.get_access_token(res_user_obj)
-            
-#         access_token_rec = request.env['api.access_token'].sudo().search([('token','=',access_token)])
-#         if access_token in access_token_rec.token:
+
+        #         access_token_rec = request.env['api.access_token'].sudo().search([('token','=',access_token)])
+        #         if access_token in access_token_rec.token:
         if access_token in acs_token_ids:
             product_list = []
             product_search = request.env['product.template'].sudo().search([])
@@ -33,7 +35,7 @@ class ProductApiController(http.Controller):
                     "default_code": p.default_code,
                     "revision": p.revision,
                     "name": p.name,
-                    "part_type":p.part_type,
+                    "part_type": p.part_type,
                     "material": p.material,
                     "length": p.length,
                     "breadth": p.breadth,
@@ -41,40 +43,40 @@ class ProductApiController(http.Controller):
                     "weight": p.weight,
                     "lifecycle_status": p.lifecycle_status
                 })
-    
+
             request.params['product_list'] = product_list
             return request.params
         else:
-            return {"status": "error", "message": "Please provide 'Access Token' for this User %s"%res_user_obj.name}
-        
+            return {"status": "error", "message": "Please provide 'Access Token' for this User %s" % res_user_obj.name}
+
     # Product Delete
     @http.route('/api/product_delete/', type='json', auth="public")
     def product_delete_fun(self, **kw):
-#         access_token = request.httprequest.headers.get("access_token")
+        #         access_token = request.httprequest.headers.get("access_token")
         access_token = kw.get("access_token")
-        res_user_obj = request.env['res.users'].sudo().search([('id','=',request.env.context['uid'])])
+        res_user_obj = request.env['res.users'].sudo().search([('id', '=', request.env.context['uid'])])
         acs_token_ids = self.get_access_token(res_user_obj)
         if access_token in acs_token_ids:
             if request.params.get('part_no'):
                 part_no = request.params['part_no']
-                record = request.env['product.template'].sudo().search([('default_code','=',part_no)])
+                record = request.env['product.template'].sudo().search([('default_code', '=', part_no)])
                 if record:
                     for i in record:
                         i.unlink()
-                    return {"status":"sucess","message":"Products are deleted"}
+                    return {"status": "sucess", "message": "Products are deleted"}
                 else:
-                    return {"status":"sucess","message":"Product Part number not exist in 'Template'"}
+                    return {"status": "sucess", "message": "Product Part number not exist in 'Template'"}
             else:
                 return {"status": "error", "message": "please provide part number in []"}
         else:
-            return {"status": "error", "message": "Please provide 'Access Token' for this User %s"%res_user_obj.name}
-        
-    # Create Logic   
+            return {"status": "error", "message": "Please provide 'Access Token' for this User %s" % res_user_obj.name}
+
+    # Create Logic
     @http.route('/api/product_create/', type='json', auth="public")
     def producte_create(self, **kw):
-#         access_token = request.httprequest.headers.get("access_token")
+        #         access_token = request.httprequest.headers.get("access_token")
         access_token = kw.get("access_token")
-        res_user_obj = request.env['res.users'].sudo().search([('id','=',request.env.context['uid'])])
+        res_user_obj = request.env['res.users'].sudo().search([('id', '=', request.env.context['uid'])])
         acs_token_ids = self.get_access_token(res_user_obj)
         if access_token in acs_token_ids:
             if kw.get("pp"):
@@ -90,40 +92,39 @@ class ProductApiController(http.Controller):
                     height = i.get('height')
                     weight = i.get('weight')
                     lifecycle_status = i.get('lifecycle_status')
-    
-                    p_search_obj = request.env['product.template'].sudo().search([('default_code','=',default_code)])
-#                     product_Categ_id = request.env['product.category'].sudo().search([('name','=','All')],limit=1)
+
+                    p_search_obj = request.env['product.template'].sudo().search([('default_code', '=', default_code)])
+                    #                     product_Categ_id = request.env['product.category'].sudo().search([('name','=','All')],limit=1)
                     if not p_search_obj:
                         sd = request.env['product.template'].sudo().create({
                             "part": part,
                             "default_code": default_code,
                             "revision": revision,
                             "name": name,
-                            "part_type":part_type,
+                            "part_type": part_type,
                             "material": material,
                             "length": length,
                             "breadth": breadth,
                             "height": height,
                             "weight": weight,
                             "lifecycle_status": lifecycle_status,
-                            "company_id":request.env.company.id
-    
+                            "company_id": request.env.company.id
+
                         })
                         print(sd)
-    #                     status = 'Product Created Successfully'
-#                     else:
-#                         status = 'Product Name already Exists'
+            #                     status = 'Product Created Successfully'
+            #                     else:
+            #                         status = 'Product Name already Exists'
             return {"status": 'Product Created'}
         else:
-            return {"status": "error", "message": "Please provide 'Access Token' for this User %s"%res_user_obj.name}
-       
-    
-    # Product Update Logic   
+            return {"status": "error", "message": "Please provide 'Access Token' for this User %s" % res_user_obj.name}
+
+    # Product Update Logic
     @http.route('/api/product_update', type='json', auth="public")
     def producte_update(self, **kw):
-#         access_token = request.httprequest.headers.get("access_token")
+        #         access_token = request.httprequest.headers.get("access_token")
         access_token = kw.get("access_token")
-        res_user_obj = request.env['res.users'].sudo().search([('id','=',request.env.context['uid'])])
+        res_user_obj = request.env['res.users'].sudo().search([('id', '=', request.env.context['uid'])])
         acs_token_ids = self.get_access_token(res_user_obj)
         if access_token in acs_token_ids:
             if kw.get("pp"):
@@ -139,92 +140,93 @@ class ProductApiController(http.Controller):
                     height = i.get('height')
                     weight = i.get('weight')
                     lifecycle_status = i.get('lifecycle_status')
-    
-                    p_search_obj = request.env['product.template'].sudo().search([('default_code','=',default_code)])
+
+                    p_search_obj = request.env['product.template'].sudo().search([('default_code', '=', default_code)])
                     if p_search_obj:
                         p_search_obj.write({
                             "part": part,
                             "default_code": default_code,
                             "revision": revision,
                             "name": name,
-                            "part_type":part_type,
+                            "part_type": part_type,
                             "material": material,
                             "length": length,
                             "breadth": breadth,
                             "height": height,
                             "weight": weight,
                             "lifecycle_status": lifecycle_status,
-                            "company_id":request.env.company.id
-    
+                            "company_id": request.env.company.id
+
                         })
-                return {"status": 'Product %s Updated ' %p_search_obj.id}
+                return {"status": 'Product %s Updated ' % p_search_obj.id}
         else:
-            return {"status": "error", "message": "Please provide 'Access Token' for this User %s"%res_user_obj.name}
-            
-            
-    # BOM Create Logic   
+            return {"status": "error", "message": "Please provide 'Access Token' for this User %s" % res_user_obj.name}
+
+    # BOM Create Logic
     @http.route('/api/bom_part_create/', type='json', auth="public")
     def bom_part_create(self, **kw):
-#         access_token = request.httprequest.headers.get("access_token")
+        #         access_token = request.httprequest.headers.get("access_token")
         access_token = kw.get("access_token")
-        res_user_obj = request.env['res.users'].sudo().search([('id','=',request.env.context['uid'])])
+        res_user_obj = request.env['res.users'].sudo().search([('id', '=', request.env.context['uid'])])
         acs_token_ids = self.get_access_token(res_user_obj)
         if access_token in acs_token_ids:
             if kw.get("pp"):
                 for i in kw.get("pp"):
                     default_code = i.get('part')
                     name = i.get('part')
-                    
-                    product_templ_rec = request.env['product.template'].sudo().search([('default_code','=',default_code)])
+
+                    product_templ_rec = request.env['product.template'].sudo().search(
+                        [('default_code', '=', default_code)])
                     if not product_templ_rec:
                         product_templ_rec = request.env['product.template'].sudo().create({
                             "default_code": default_code,
                             "name": name,
+                            "company_id": request.env.company.id
                         })
                     _logger.infor("*************Product Temp Rec***********")
                     _logger.infor(product_templ_rec)
-                    
-                    mrp_bom_obj = request.env['mrp.bom'].sudo().search([('code','=',default_code)])
+
+                    mrp_bom_obj = request.env['mrp.bom'].sudo().search([('code', '=', default_code)])
                     if not mrp_bom_obj:
                         mrp_bom_obj = request.env['mrp.bom'].sudo().create({
-                                "product_tmpl_id": product_templ_rec.id,
-                                "code": default_code,
-                                "product_qty": 10,
-                            })
+                            "product_tmpl_id": product_templ_rec.id,
+                            "code": default_code,
+                            "product_qty": 10,
+                        })
                     _logger.infor("*************MRP Bom Rec***********")
                     _logger.infor(mrp_bom_obj)
                     if mrp_bom_obj:
                         for j in i.get('child_ids'):
-                            p_temp = request.env['product.template'].sudo().search([('default_code','=',j['part'])])
+                            p_temp = request.env['product.template'].sudo().search([('default_code', '=', j['part'])])
                             if not p_temp:
                                 p_temp = request.env['product.template'].sudo().create({
                                     "default_code": j['part'],
-                                    "name": j['part']
+                                    "name": j['part'],
+                                    "company_id": request.env.company.id
                                 })
                             _logger.infor("*************Inside - Product Temp Rec***********")
-                            _logger.infor(p_temp)    
-    
-                            p_variant = request.env['product.product'].sudo().search([('product_tmpl_id','=',p_temp.id)])
+                            _logger.infor(p_temp)
+
+                            p_variant = request.env['product.product'].sudo().search(
+                                [('product_tmpl_id', '=', p_temp.id)])
                             if not p_variant:
                                 p_variant = request.env['product.product'].sudo().create({
                                     "default_code": j['part'],
                                     "name": j['part'],
-                                    "product_tmpl_id":p_temp.id
+                                    "product_tmpl_id": p_temp.id
                                 })
                             _logger.infor("*************Inside - Product Variant Rec***********")
-                            _logger.infor(p_variant) 
+                            _logger.infor(p_variant)
                             mrp_bom_objtest_bom_l1 = request.env['mrp.bom.line'].sudo().create({
                                 'bom_id': mrp_bom_obj.id,
                                 'product_id': p_variant.id,
                                 'product_qty': 12
                             })
-                        
+
                 return {"status": 'BOM Part %s Created ' % mrp_bom_obj.id}
-        
-        
-       
+
     @http.route('/api/token', type='json', auth="public")
-    def get_api_token(self, **kw):   
+    def get_api_token(self, **kw):
         """The token URL to be used for getting the access_token:
 
         Args:
@@ -250,17 +252,17 @@ class ProductApiController(http.Controller):
            headers.update(access-token=content.get('access_token'))
         """
         _token = request.env["api.access_token"]
-#         params = ["db", "login", "password"]
+        #         params = ["db", "login", "password"]
         db = kw.get('db')
-        username=kw.get('login')
+        username = kw.get('login')
         password = kw.get('password')
-#         params = {key: post.get(key) for key in params if post.get(key)}
-#         db, username, password = (
-#             params.get("db"),
-#             post.get("login"),
-#             post.get("password"),
-#         )
-          
+        #         params = {key: post.get(key) for key in params if post.get(key)}
+        #         db, username, password = (
+        #             params.get("db"),
+        #             post.get("login"),
+        #             post.get("password"),
+        #         )
+
         _credentials_includes_in_body = all([db, username, password])
         if not _credentials_includes_in_body:
             # The request post body is empty the credetials maybe passed via the headers.
@@ -306,10 +308,9 @@ class ProductApiController(http.Controller):
             "company_ids": request.env.user.company_ids.ids if uid else None,
             "partner_id": request.env.user.partner_id.id,
             "access_token": access_token,
-#             "expires_in": self._expires_in,
+            #             "expires_in": self._expires_in,
         })
-        
-        
+
         request.params['request_value'] = request_value
         print(request.params)
         return request.params
